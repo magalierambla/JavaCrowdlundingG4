@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -26,8 +25,8 @@ import javax.persistence.OneToOne;
 @Table(name = "list_commission_project",uniqueConstraints={@UniqueConstraint(columnNames ={"token"})})
 @EntityListeners(AuditingEntityListener.class)
 public class commissionProjectModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,30 +34,30 @@ public class commissionProjectModel implements Serializable{
 
     @Column(nullable = false)
     private Long amount;
-    
+
     @Column(nullable = false)
-    private String token;   
-  
+    private String token;
+
 
 	@Column(nullable = false)
     private String date_created;
-    
+
     @Column(nullable = false)
-    private Long timestamp;  
-    
+    private Long timestamp;
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date created_at;
-    
+
 	@OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_manager", referencedColumnName = "token")
-    private adminstrateur manager_project ;
-    
+    private Adminstrateur manager_project ;
+
     public Long getId() {
 		return id;
 	}
@@ -89,7 +88,7 @@ public class commissionProjectModel implements Serializable{
 	}
 
 
-	
+
 
 
 	public String getDate_created() {
@@ -122,27 +121,27 @@ public class commissionProjectModel implements Serializable{
 	}
 
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
 
-	public adminstrateur getManager_project() {
+	public Adminstrateur getManager_project() {
 		return manager_project;
 	}
 
 
-	public void setManager_project(adminstrateur manager_project) {
+	public void setManager_project(Adminstrateur manager_project) {
 		this.manager_project = manager_project;
 	}
 
-	
-  
+
+
 
 }
 

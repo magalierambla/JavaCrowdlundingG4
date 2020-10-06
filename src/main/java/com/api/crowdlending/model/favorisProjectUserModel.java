@@ -11,36 +11,35 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 import javax.persistence.OneToOne;
 
 
 @Entity
 @Table(name = "favoris_project_user",uniqueConstraints={@UniqueConstraint(columnNames ={"token"})})
 public class favorisProjectUserModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    
-    
+    private Long id;
+
     @Column(nullable = false)
     private String date_created;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @Column(nullable = false)
     private String token;
-    
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_user", referencedColumnName = "token")
-    private user _user;
+    private User _user;
 
 	public String getDate_created() {
 		return date_created;
@@ -74,29 +73,29 @@ public class favorisProjectUserModel implements Serializable{
 		this.token = token;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
-	public user get_user() {
+	public User get_user() {
 		return _user;
 	}
 
-	public void set_user(user _user) {
+	public void set_user(User _user) {
 		this._user = _user;
 	}
 
 
- 
 
 
 
-	
-  
+
+
+
 
 }
 

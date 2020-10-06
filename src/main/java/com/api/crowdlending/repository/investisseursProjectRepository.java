@@ -18,13 +18,13 @@ import java.util.List;
 @Table(name = "investisseurs_project")
 public interface  investisseursProjectRepository extends JpaRepository<investisseursProjectModel, Long> {
 
-	
-	
-	List<investisseursProjectModel>  findBy_project(project  _project); 
-	
+
+
+	List<investisseursProjectModel>  findBy_project(Project _project);
+
 	@Query(value = "SELECT  *  FROM  investisseurs_project   WHERE  token_project=?1  AND  token_invest=?2 ", nativeQuery = true)
 	Optional<investisseursProjectModel> check_invest_project(String token_project, String token_invest);
-	
+
 	@Query(value = "SELECT  *  FROM  investisseurs_project  WHERE   token_invest=?1", nativeQuery = true)
     List<investisseursProjectModel> findAllContribProjectByToken(String tokenUser);
 

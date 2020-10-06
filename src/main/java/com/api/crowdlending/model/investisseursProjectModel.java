@@ -1,7 +1,6 @@
 package com.api.crowdlending.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-
-import org.springframework.data.annotation.CreatedDate;
 
 import com.api.crowdlending.enumapp.statutDemandeInvest;
 
@@ -25,32 +20,32 @@ import com.api.crowdlending.enumapp.statutDemandeInvest;
 @Entity
 @Table(name = "investisseurs_project",uniqueConstraints={@UniqueConstraint(columnNames ={"token"})})
 public class investisseursProjectModel implements Serializable{
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    
-    
-	 @Column(nullable = false, updatable = false)	 
+    private Long id;
+
+	 @Column(nullable = false, updatable = false)
 	 private String date_created;
-   
+
     @Column(nullable = false)
     private String token;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
-    @Enumerated(EnumType.STRING)  
+
+    @Enumerated(EnumType.STRING)
     private  statutDemandeInvest  statutDemande ;
-    
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_invest", referencedColumnName = "token")
-    private user _userProjectInvest;
-    
-    @Column(nullable = true)  
+    private User _userProjectInvest;
+
+    @Column(nullable = true)
     private String date_update;
 
 	public Long getId() {
@@ -93,19 +88,19 @@ public class investisseursProjectModel implements Serializable{
 		this.statutDemande = statutDemande;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
-	public user get_userProjectInvest() {
+	public User get_userProjectInvest() {
 		return _userProjectInvest;
 	}
 
-	public void set_userProjectInvest(user _userProjectInvest) {
+	public void set_userProjectInvest(User _userProjectInvest) {
 		this._userProjectInvest = _userProjectInvest;
 	}
 
@@ -122,8 +117,8 @@ public class investisseursProjectModel implements Serializable{
 		return "investisseursProjectModel [id=" + id + ", date_created=" + date_created + ", token=" + token
 				+ ", timestamp=" + timestamp + ", statutDemande=" + statutDemande + ", _project=" + _project
 				+ ", _userProjectInvest=" + _userProjectInvest + ", date_update=" + date_update + "]";
-	} 
-    
-	
+	}
+
+
 
 }

@@ -16,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -31,37 +30,37 @@ import javax.persistence.OneToOne;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "like_dislike_project_user")
 public class likeDislikeProjectModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;   
-    
+    private Long id;
+
     @Column(nullable = false)
     private String date_created;
-    
-    @Column(nullable = true)  
-    private String date_update; 
-    
+
+    @Column(nullable = true)
+    private String date_update;
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date created_at;
-    
-    @Enumerated(EnumType.STRING)  
+
+    @Enumerated(EnumType.STRING)
     private likeDislikeProject  statut_like_project;
-    
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token", nullable = false)
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_user", referencedColumnName = "token", nullable = false)
-    private user _user;
+    private User _user;
 
 	public Long getId() {
 		return id;
@@ -95,19 +94,19 @@ public class likeDislikeProjectModel implements Serializable{
 		this.timestamp = timestamp;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
-	public user get_user() {
+	public User get_user() {
 		return _user;
 	}
 
-	public void set_user(user _user) {
+	public void set_user(User _user) {
 		this._user = _user;
 	}
 
@@ -133,7 +132,7 @@ public class likeDislikeProjectModel implements Serializable{
 				+ ", _project=" + _project + ", _user=" + _user + "]";
 	}
 
-	
-  
+
+
 
 }

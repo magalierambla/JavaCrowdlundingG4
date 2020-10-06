@@ -10,15 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 import javax.persistence.OneToOne;
 
 
 @Entity
 @Table(name = "fonds_investisseurs_paypal",uniqueConstraints={@UniqueConstraint(columnNames ={"token"})})
 public class fondInvestorModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,28 +25,28 @@ public class fondInvestorModel implements Serializable{
 
     @Column(nullable = false)
     private Long amount;
-    
+
     @Column(nullable = false)
-    private String token;   
-  
+    private String token;
+
 
 	@Column(nullable = false)
     private String dateCreated;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @OneToOne
     @JoinColumn(name = "token_investisseur_project", referencedColumnName = "token")
     private investisseursProjectModel _investisseurProject ;
-    
+
     @OneToOne
     @JoinColumn(name = "token_user", referencedColumnName = "token")
-    private user _user;
-    
+    private User _user;
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
+    private Project _project ;
 
 	public Long getId() {
 		return id;
@@ -56,7 +55,7 @@ public class fondInvestorModel implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getToken() {
 			return token;
 	}
@@ -97,19 +96,19 @@ public class fondInvestorModel implements Serializable{
 		this._investisseurProject = _investisseursProject;
 	}
 
-	public user get_user() {
+	public User get_user() {
 		return _user;
 	}
 
-	public void set_user(user _user) {
+	public void set_user(User _user) {
 		this._user = _user;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
@@ -118,11 +117,11 @@ public class fondInvestorModel implements Serializable{
 		return "fondInvestorModel [id=" + id + ", amount=" + amount + ", token=" + token + ", dateCreated="
 				+ dateCreated + ", timestamp=" + timestamp + ", _investisseurProject=" + _investisseurProject.toString()
 				+ ", _user=" + _user + ", _project=" + _project + "]";
-	}   
+	}
 
 
 
-	
-  
+
+
 
 }

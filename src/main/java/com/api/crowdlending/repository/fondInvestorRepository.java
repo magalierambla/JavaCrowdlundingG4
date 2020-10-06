@@ -18,12 +18,12 @@ import java.util.List;
 @Table(name = "fonds_investisseurs_paypal")
 public interface  fondInvestorRepository extends JpaRepository<fondInvestorModel, Long> {
 
-	
-	
-	List<fondInvestorModel>  findBy_project(project  _project); 
-	
-	List<fondInvestorModel>  findBy_user(user  _user); 
-	
+
+
+	List<fondInvestorModel>  findBy_project(Project _project);
+
+	List<fondInvestorModel>  findBy_user(User _user);
+
 	   @Query(value = "SELECT  *  FROM  fonds_investisseurs_paypal  WHERE  token=?1 ", nativeQuery = true)
 	   Optional<fondInvestorModel> checkExistFondProjectByToken(String token);
 

@@ -9,15 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.persistence.OneToOne;
 
 
 @Entity
 @Table(name = "question_rep_project_by_admin_for_user")
 public class QuestionRepProjectByAdminForUserModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,25 +24,25 @@ public class QuestionRepProjectByAdminForUserModel implements Serializable{
 
     @Column(nullable = false)
     private String bodyAide;
-    
+
     @Column(nullable = false)
     private String dateCreated;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_admin_exp", referencedColumnName = "token")
-    private adminstrateur _userAdminExp;
-    
+    private Adminstrateur _userAdminExp;
+
 	@OneToOne
     @JoinColumn(name = "token_user_dest", referencedColumnName = "token")
-    private user _userProjectDest;
-    
+    private User _userProjectDest;
+
     public Long getId() {
 		return id;
 	}
@@ -76,31 +75,31 @@ public class QuestionRepProjectByAdminForUserModel implements Serializable{
 		this.timestamp = timestamp;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
-	public adminstrateur get_userAdminExp() {
+	public Adminstrateur get_userAdminExp() {
 		return _userAdminExp;
 	}
 
-	public void set_userAdminExp(adminstrateur _userAdminExp) {
+	public void set_userAdminExp(Adminstrateur _userAdminExp) {
 		this._userAdminExp = _userAdminExp;
 	}
 
-	public user get_userProjectDest() {
+	public User get_userProjectDest() {
 		return _userProjectDest;
 	}
 
-	public void set_userProjectDest(user _userProjectDest) {
+	public void set_userProjectDest(User _userProjectDest) {
 		this._userProjectDest = _userProjectDest;
 	}
 
-	
-  
+
+
 
 }

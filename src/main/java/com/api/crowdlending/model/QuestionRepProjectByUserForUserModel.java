@@ -9,15 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.persistence.OneToOne;
 
 
 @Entity
-@Table(name = "question_rep_project_by_user_for_user")  
+@Table(name = "question_rep_project_by_user_for_user")
 public class  QuestionRepProjectByUserForUserModel implements Serializable{
-	
-    
+
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,25 +24,25 @@ public class  QuestionRepProjectByUserForUserModel implements Serializable{
 
     @Column(nullable = false)
     private String bodyAide;
-    
+
     @Column(nullable = false)
     private String dateCreated;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
-    
+    private Project _project ;
+
     @OneToOne
     @JoinColumn(name = "token_user_exp", referencedColumnName = "token")
-    private user _userExp;   
-    
+    private User _userExp;
+
 
 	@OneToOne
     @JoinColumn(name = "token_user_dest", referencedColumnName = "token")
-    private user _userDest;
+    private User _userDest;
 
 
 	public Long getId() {
@@ -86,40 +85,40 @@ public class  QuestionRepProjectByUserForUserModel implements Serializable{
 	}
 
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
 
-	public user get_userExp() {
+	public User get_userExp() {
 		return _userExp;
 	}
 
 
-	public void set_userExp(user _userExp) {
+	public void set_userExp(User _userExp) {
 		this._userExp = _userExp;
 	}
 
 
-	public user get_userDest() {
+	public User get_userDest() {
 		return _userDest;
 	}
 
 
-	public void set_userDest(user _userDest) {
+	public void set_userDest(User _userDest) {
 		this._userDest = _userDest;
 	}
 
-	
 
 
 
-	
-  
+
+
+
 
 }

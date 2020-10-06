@@ -3,7 +3,6 @@ package com.api.crowdlending.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -27,42 +25,42 @@ import javax.persistence.OneToOne;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "list_news_project")
 public class newsProjectModel implements Serializable{
-	
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String titre; 
-    
+    private String titre;
+
     @Column(nullable = false)
     private String description;
-    
+
     @Column(nullable = true)
-    private String photos;  
-    
+    private String photos;
+
     @Column(nullable = false)
-    private String date_created;  
-    
+    private String date_created;
+
     @Column(nullable = true)
     private String date_update;
-    
+
     @Column(nullable = false)
     private Long timestamp;
-    
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date created_at;
-    
+
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    private Date update_at; 
-    
+    private Date update_at;
+
     @OneToOne
     @JoinColumn(name = "token_project", referencedColumnName = "token")
-    private project _project ;
+    private Project _project ;
 
 	public Long getId() {
 		return id;
@@ -136,17 +134,17 @@ public class newsProjectModel implements Serializable{
 		this.update_at = update_at;
 	}
 
-	public project get_project() {
+	public Project get_project() {
 		return _project;
 	}
 
-	public void set_project(project _project) {
+	public void set_project(Project _project) {
 		this._project = _project;
 	}
 
 
-	
-    
-  
+
+
+
 
 }
